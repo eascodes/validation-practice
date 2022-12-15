@@ -9,6 +9,33 @@
     <title>Form Validation Practice</title>
 </head>
 <body>
-    
+    <h1>New User Form</h1>
+    <form novalidate action="">
+        <div>
+            <label for="email">Email:<span aria-label="required">*</span></label>
+            <input type="text" name="email" id="email">
+            <span class="error" aria-live="polite">Error message</span>
+        </div>
+        <div>
+            <label for="country">Country:<span aria-label="required">*</span></label>
+            <input type="text" name="email" id="email">
+            <span class="error" aria-live="polite">Error message</span>
+        </div>
+        <div>
+            <label for="zip">Zip code:<span aria-label="required">*</span></label>
+            <input type="number" name="zip" id="zip">
+            <span class="error" aria-live="polite">Error message</span>
+        </div>
+        <div>
+            <label for="password1">Password:<span aria-label="required">*</span></label>
+            <input type="password" name="password1" id="password1">
+            <span class="error" aria-live="polite">Error message</span>
+        </div>
+        <div>
+            <label for="password2">Confirm password:<span aria-label="required">*</span></label>
+            <input type="password" name="password2" id="password2">
+            <span class="error" aria-live="polite">Error message</span>
+        </div>
+    </form>
 </body>
 </html>
