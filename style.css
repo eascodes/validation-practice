@@ -19,7 +19,7 @@ h1 {
 
   label,
   input,
-  span {
+  span.error {
     display: block;
   }
 

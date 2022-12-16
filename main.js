@@ -1,0 +1,71 @@
+const form = document.querySelector("form");
+
+// Set input variables
+const email = document.querySelector("#email");
+const country = document.querySelector("#country");
+const zip = document.querySelector("#zip");
+const pwd = document.querySelector("#pwd");
+const pwd2 = document.querySelector("pwd2");
+
+// Set error variables
+const emailError = document.querySelector("#email + span.error");
+const countryError = document.querySelector("#country + span.error");
+const zipError = document.querySelector("#zip + span.error");
+const pwdError = document.querySelector("#pwd + span.error");
+
+function addListeners(item, itemError, valueMsg, typeMsg, label) {
+    item.addEventListener("input", (event) => {
+        if (item.validity.valid) {
+            itemError.textContent = "";
+            itemError.className = "error";
+        } else {
+            showError(item, itemError, valueMsg, typeMsg, label);
+        }
+    });
+
+    form.addEventListener("submit", (event) => {
+        if (!item.validity.valid) {
+            showError(item, itemError, valueMsg, typeMsg, label);
+            event.preventDefault();
+        }
+    })
+}
+
+function showError(item, itemError, valueMsg, typeMsg, label) {
+    
+    if (item.validity.valueMissing) {
+        itemError.textContent = valueMsg;
+    } else if (item.validity.typeMismatch) {
+        itemError.textContent = typeMsg;
+    } else if (item.validity.tooShort) {
+        itemError.textContent = `${label} should be at least ${item.minLength} characters; you entered ${item.value.length}`;
+    } else if (item.validity.patternMismatch) {
+        itemError.textContent = typeMsg;
+    }
+    
+    itemError.className = "error active";
+}
+
+addListeners(
+    email, 
+    emailError, 
+    "You need to enter an email address", 
+    "Entered value needs to be an email address", 
+    "Email"
+    );
+
+addListeners(
+    country, 
+    countryError, 
+    "You need to enter a country", 
+    "Entered value needs to be a country", 
+    "Country"
+    );
+
+addListeners(
+    zip, 
+    zipError, 
+    "You need to enter a zipcode", 
+    "Entered value needs to be a zipcode", 
+    "Zipcode"
+    ); 

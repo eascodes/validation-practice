@@ -13,28 +13,28 @@
     <form novalidate action="">
         <div>
             <label for="email">Email:<span aria-label="required">*</span></label>
-            <input type="text" name="email" id="email">
-            <span class="error" aria-live="polite">Error message</span>
+            <input type="email" name="email" id="email" minlength="10">
+            <span class="error" aria-live="polite"></span>
         </div>
         <div>
             <label for="country">Country:<span aria-label="required">*</span></label>
-            <input type="text" name="email" id="email">
-            <span class="error" aria-live="polite">Error message</span>
+            <input type="text" name="email" id="country" minlength="4" pattern="[a-zA-Z]+">
+            <span class="error" aria-live="polite"></span>
         </div>
         <div>
             <label for="zip">Zip code:<span aria-label="required">*</span></label>
-            <input type="number" name="zip" id="zip">
-            <span class="error" aria-live="polite">Error message</span>
+            <input type="text" name="zip" id="zip" minlength="5" maxlength="9" pattern="[0-9]+">
+            <span class="error" aria-live="polite"></span>
         </div>
         <div>
             <label for="password1">Password:<span aria-label="required">*</span></label>
             <input type="password" name="password1" id="password1">
-            <span class="error" aria-live="polite">Error message</span>
+            <span class="error" aria-live="polite"></span>
         </div>
         <div>
             <label for="password2">Confirm password:<span aria-label="required">*</span></label>
             <input type="password" name="password2" id="password2">
-            <span class="error" aria-live="polite">Error message</span>
+            <span class="error" aria-live="polite"></span>
         </div>
         <div>
             <button>Submit</button>
