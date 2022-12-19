@@ -137,16 +137,22 @@ let result = true;
 const checkForm = (arguments) => {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        // Check for invalid arguments
+        // Check for invalid or empty arguments
         for (let i=0; i < arguments.length; i += 1) {
             if (!arguments[i].validity.valid) {
                 result = false;
                 break;
-            } 
+            } else if (arguments[i].value === "") {
+                result = "empty";
+                break;
+            }
         }
         // Show correct alert message
         if (result === false) {
             alert("Please correct the form errors shown below");
+            result = true;
+        } else if (result === "empty") {
+            alert("Please fill in answers to all fields");
             result = true;
         } else if (pwd.value !== pwd2.value) {
             alert("Passwords must match - please try again.");
