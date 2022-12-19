@@ -84,6 +84,14 @@ button {
   color: green;
 }
 
+.valid:before {
+  content: "✓";
+}
+
+.invalid:before {
+  content: "✖";
+}
+
 .invalid {
   color: red;
 }
