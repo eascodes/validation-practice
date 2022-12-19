@@ -74,9 +74,10 @@ button {
 
 #message p {
   margin: 0;
+  font-size: 80%;
 }
 
-#message h4 {
+#message > p {
   margin: 5px 0 0 0;
 }
 
@@ -93,5 +94,5 @@ button {
 }
 
 .invalid {
-  color: red;
+  color: #900;
 }

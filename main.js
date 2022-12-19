@@ -11,10 +11,10 @@ const pwd2 = document.querySelector("#password2");
 const emailError = document.querySelector("#email + span.error");
 const countryError = document.querySelector("#country + span.error");
 const zipError = document.querySelector("#zip + span.error");
-const pwdError = document.querySelector("#pwd + span.error");
+const pwdMatchError = document.querySelector("#password2 + span.error");
 
 function addListeners(item, itemError, valueMsg, typeMsg, label) {
-    item.addEventListener("input", (event) => {
+    item.addEventListener("input", () => {
         if (item.validity.valid) {
             itemError.textContent = "";
             itemError.className = "error";
@@ -23,7 +23,7 @@ function addListeners(item, itemError, valueMsg, typeMsg, label) {
         }
     });
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", () => {
         if (!item.validity.valid) {
             showError(item, itemError, valueMsg, typeMsg, label);
             event.preventDefault();
@@ -80,7 +80,7 @@ const length = document.getElementById("length");
 pwd.onfocus = function() {
     document.getElementById("message").style.display = "block";
 }
-// Hide message when clicking away from input field
+// Hide message when clicking away from input field if pwd is valid
 pwd.onblur = function() {
     if (pwd.validity.valid) {
         document.getElementById("message").style.display = "none";
@@ -128,3 +128,13 @@ pwd.onkeyup = function() {
       length.classList.add("invalid");
     }
   }
+
+pwd2.addEventListener("input", () => {
+    if (pwd2.value !== pwd.value) {
+        pwdMatchError.textContent = "Passwords must match.";
+        pwdMatchError.className = "error active";
+    } else {
+        pwdMatchError.textContent = "";
+        pwdMatchError.className = "error";
+    }
+})
