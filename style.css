@@ -64,6 +64,26 @@ div:nth-child(6) {
     align-self: center;
 }
 
-  button {
-    margin-top: 20px;
-  }
+button {
+  margin-top: 20px;
+}
+
+#message {
+  display: none;
+}
+
+#message p {
+  margin: 0;
+}
+
+#message h4 {
+  margin: 5px 0 0 0;
+}
+
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: red;
+}

@@ -4,8 +4,8 @@ const form = document.querySelector("form");
 const email = document.querySelector("#email");
 const country = document.querySelector("#country");
 const zip = document.querySelector("#zip");
-const pwd = document.querySelector("#pwd");
-const pwd2 = document.querySelector("pwd2");
+const pwd = document.querySelector("#password1");
+const pwd2 = document.querySelector("#password2");
 
 // Set error variables
 const emailError = document.querySelector("#email + span.error");
@@ -69,3 +69,60 @@ addListeners(
     "Entered value needs to be a zipcode", 
     "Zipcode"
     ); 
+
+// Password validation
+const letter = document.getElementById("letter");
+const capital = document.getElementById("capital");
+const number = document.getElementById("number");
+const length = document.getElementById("length");
+
+// Display password validation message when clicking on input field
+pwd.onfocus = function() {
+    document.getElementById("message").style.display = "block";
+}
+// Hide message when clicking away from input field
+pwd.onblur = function() {
+    document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+pwd.onkeyup = function() {
+    // Validate lowercase letters
+    const lowerCaseLetters = /[a-z]/g;
+    if(pwd.value.match(lowerCaseLetters)) {
+      letter.classList.remove("invalid");
+      letter.classList.add("valid");
+    } else {
+      letter.classList.remove("valid");
+      letter.classList.add("invalid");
+  }
+  
+    // Validate capital letters
+    const upperCaseLetters = /[A-Z]/g;
+    if(pwd.value.match(upperCaseLetters)) {
+      capital.classList.remove("invalid");
+      capital.classList.add("valid");
+    } else {
+      capital.classList.remove("valid");
+      capital.classList.add("invalid");
+    }
+  
+    // Validate numbers
+    const numbers = /[0-9]/g;
+    if(pwd.value.match(numbers)) {
+      number.classList.remove("invalid");
+      number.classList.add("valid");
+    } else {
+      number.classList.remove("valid");
+      number.classList.add("invalid");
+    }
+  
+    // Validate length
+    if(pwd.value.length >= 8) {
+      length.classList.remove("invalid");
+      length.classList.add("valid");
+    } else {
+      length.classList.remove("valid");
+      length.classList.add("invalid");
+    }
+  }
