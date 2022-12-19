@@ -22,17 +22,10 @@ function addListeners(item, itemError, valueMsg, typeMsg, label) {
             showError(item, itemError, valueMsg, typeMsg, label);
         }
     });
-
-    form.addEventListener("submit", () => {
-        if (!item.validity.valid) {
-            showError(item, itemError, valueMsg, typeMsg, label);
-            e.preventDefault();
-        }
-    })
 }
 
+// Show correct error messages
 function showError(item, itemError, valueMsg, typeMsg, label) {
-    
     if (item.validity.valueMissing) {
         itemError.textContent = valueMsg;
     } else if (item.validity.typeMismatch) {
@@ -41,8 +34,7 @@ function showError(item, itemError, valueMsg, typeMsg, label) {
         itemError.textContent = `${label} should be at least ${item.minLength} characters; you entered ${item.value.length}`;
     } else if (item.validity.patternMismatch) {
         itemError.textContent = typeMsg;
-    }
-    
+    }   
     itemError.className = "error active";
 }
 
@@ -129,6 +121,7 @@ pwd.onkeyup = function() {
     }
   }
 
+// Check if password inputs match
 pwd2.addEventListener("input", () => {
     if (pwd2.value !== pwd.value) {
         pwdMatchError.textContent = "Passwords must match.";
@@ -138,3 +131,27 @@ pwd2.addEventListener("input", () => {
         pwdMatchError.className = "error";
     }
 })
+
+// Overall form validation upon submission
+let result = true;
+const checkForm = (arguments) => {
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        // Check for invalid arguments
+        for (let i=0; i < arguments.length; i += 1) {
+            if (!arguments[i].validity.valid) {
+                result = false;
+                break;
+            } 
+        }
+        // Show correct alert message
+        if (result === false) {
+            alert("Please correct the form errors shown below");
+            result = true;
+        } else if (pwd.value !== pwd2.value) {
+            alert("Passwords must match - please try again.");
+        } else { alert("High five!") }
+    })
+}
+
+checkForm([email, country, zip, pwd, pwd2]);
