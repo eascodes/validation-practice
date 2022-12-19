@@ -82,7 +82,9 @@ pwd.onfocus = function() {
 }
 // Hide message when clicking away from input field
 pwd.onblur = function() {
-    document.getElementById("message").style.display = "none";
+    if (pwd.validity.valid) {
+        document.getElementById("message").style.display = "none";
+    }
 }
 
 // When the user starts to type something inside the password field
