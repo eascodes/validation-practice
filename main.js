@@ -26,7 +26,7 @@ function addListeners(item, itemError, valueMsg, typeMsg, label) {
     form.addEventListener("submit", () => {
         if (!item.validity.valid) {
             showError(item, itemError, valueMsg, typeMsg, label);
-            event.preventDefault();
+            e.preventDefault();
         }
     })
 }
